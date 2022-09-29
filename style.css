@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  height: 800px;
+}
+
+.gridItems {
+  border: 1px solid black;
+}
+
+.grid-container {
+  border: 1px solid black;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(16, 20px);
+  grid-template-rows: repeat(16, 20px);
+  background-color: white;
+  /* grid-row-gap: 2px;
+  grid-column-gap: 2px; */
+}
+
+.gridItems:hover {
+  background-color: black;
+}
