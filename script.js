@@ -10,6 +10,14 @@ for (let i = 0; i < 256; i++) {
 
   const container = document.querySelector(".grid-container");
   container.appendChild(grid);
+
+  const clearbtn = document.getElementById("clear-btn");
+
+  clearbtn.addEventListener("click", clearGrid);
+
+  function clearGrid() {
+    grid.style.backgroundColor = "white";
+  }
 }
 
 function changeColor(e) {
@@ -17,3 +25,11 @@ function changeColor(e) {
     e.target.style.backgroundColor = "red";
   }
 }
+
+// const clearbtn = document.getElementById("clear-btn");
+
+// clearbtn.addEventListener("click", clearGrid);
+
+// function clearGrid() {
+//   grid.style.backgroundColor = "white";
+// }
