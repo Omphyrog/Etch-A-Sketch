@@ -1,17 +1,19 @@
-for (let i = 0; i < 256; i++) {
-  makeGrid();
-}
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
-function makeGrid() {
+for (let i = 0; i < 256; i++) {
   const grid = document.createElement("div");
   grid.classList.add("gridItems");
+  grid.addEventListener("mouseover", changeColor);
+  grid.addEventListener("mousedown", changeColor);
 
   const container = document.querySelector(".grid-container");
   container.appendChild(grid);
+}
 
-  if (true) {
-    grid.addEventListener("mousemove", function () {
-      grid.style.backgroundColor = "red";
-    });
+function changeColor(e) {
+  if (mouseDown) {
+    e.target.style.backgroundColor = "red";
   }
 }
