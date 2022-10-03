@@ -10,6 +10,15 @@ html {
   padding: 0;
 }
 
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .container {
   display: grid;
   justify-content: center;
@@ -20,6 +29,7 @@ html {
 
 .gridItems {
   border: 1px solid black;
+  pointer-events: painted;
 }
 
 .grid-container {
@@ -30,10 +40,6 @@ html {
   grid-template-columns: repeat(16, 20px);
   grid-template-rows: repeat(16, 20px);
   background-color: white;
-}
-
-.gridItems:hover {
-  background-color: black;
 }
 
 .slidecontainer {
