@@ -5,6 +5,8 @@ document.body.onmouseup = () => (mouseDown = false);
 
 function createGrid(size) {
   const board = document.querySelector(".board");
+  const squares = board.querySelectorAll("div");
+  squares.forEach((div) => div.remove());
   board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
@@ -38,19 +40,18 @@ function resetGrid() {
   squares.forEach((div) => (div.style.backgroundColor = "white"));
 }
 
-// function changeGridSize() {
-//   let total = 0;
-//   const slider = document.getElementById("myRange");
-//   const output = document.getElementById("demo");
-//   output.innerHTML = slider.value; // Display the default slider value
+function changeGridSize() {
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("demo");
 
-//   // Update the current slider value (each time you drag the slider handle)
-//   slider.oninput = function () {
-//     output.innerHTML = this.value;
-//     total = this.value;
-//     console.log(total);
-//   };
-// }
+  output.innerHTML = slider.value; // Display the default slider value
 
-// changeGridSize();
-createGrid(50);
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+    createGrid(this.value);
+  };
+}
+
+changeGridSize();
+createGrid(16);
