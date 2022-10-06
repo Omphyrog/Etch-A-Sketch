@@ -1,22 +1,28 @@
 let mouseDown = false;
+
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
-for (let i = 0; i < 256; i++) {
-  const grid = document.createElement("div");
-  grid.classList.add("gridItems");
-  grid.addEventListener("mouseover", changeColor);
-  grid.addEventListener("mousedown", changeColor);
+function createGrid(size) {
+  const board = document.querySelector(".board");
+  board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-  const container = document.querySelector(".grid-container");
-  container.appendChild(grid);
+  const resetBtn = document.getElementById("reset-btn");
+  resetBtn.addEventListener("click", resetGrid);
 
-  const clearbtn = document.getElementById("clear-btn");
+  let amount = size * size;
 
-  clearbtn.addEventListener("click", clearGrid);
+  for (let i = 0; i < amount; i++) {
+    const square = document.createElement("div");
+    square.style.backgroundColor = "white";
+    square.style.border = "1px solid black";
 
-  function clearGrid() {
-    grid.style.backgroundColor = "white";
+    square.addEventListener("mouseover", changeColor);
+    square.addEventListener("mousedown", changeColor);
+    square.addEventListener("mouseup", changeColor);
+
+    board.insertAdjacentElement("beforeend", square);
   }
 }
 
@@ -26,10 +32,25 @@ function changeColor(e) {
   }
 }
 
-// const clearbtn = document.getElementById("clear-btn");
+function resetGrid() {
+  const board = document.querySelector(".board");
+  let squares = board.querySelectorAll("div");
+  squares.forEach((div) => (div.style.backgroundColor = "white"));
+}
 
-// clearbtn.addEventListener("click", clearGrid);
+// function changeGridSize() {
+//   let total = 0;
+//   const slider = document.getElementById("myRange");
+//   const output = document.getElementById("demo");
+//   output.innerHTML = slider.value; // Display the default slider value
 
-// function clearGrid() {
-//   grid.style.backgroundColor = "white";
+//   // Update the current slider value (each time you drag the slider handle)
+//   slider.oninput = function () {
+//     output.innerHTML = this.value;
+//     total = this.value;
+//     console.log(total);
+//   };
 // }
+
+// changeGridSize();
+createGrid(50);
