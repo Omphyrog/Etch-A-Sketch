@@ -9,7 +9,10 @@
     <title>Etch-A-Sketch</title>
   </head>
   <body>
-    <button id="reset-btn">Clear</button>
+    <input type="color" id="color-picker" />
+    <button class="btn" id="eraser"></button>
+    <button class="btn" id="color">Color mode</button>
+    <button class="btn" id="reset-btn">Clear</button>
     <div class="slidecontainer">
       <input
         type="range"
@@ -22,6 +25,6 @@
       <p>Value: <span id="demo"></span></p>
     </div>
 
-    <div class="board"></div>
+    <div class="grid"></div>
   </body>
 </html>

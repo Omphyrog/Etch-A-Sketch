@@ -4,11 +4,11 @@ document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
 function createGrid(size) {
-  const board = document.querySelector(".board");
-  const squares = board.querySelectorAll("div");
+  const grid = document.querySelector(".grid");
+  const squares = grid.querySelectorAll("div");
   squares.forEach((div) => div.remove());
-  board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
   const resetBtn = document.getElementById("reset-btn");
   resetBtn.addEventListener("click", resetGrid);
@@ -24,19 +24,21 @@ function createGrid(size) {
     square.addEventListener("mousedown", changeColor);
     square.addEventListener("mouseup", changeColor);
 
-    board.insertAdjacentElement("beforeend", square);
+    grid.insertAdjacentElement("beforeend", square);
   }
 }
 
 function changeColor(e) {
+  const color = document.getElementById("color-picker");
+
   if (mouseDown) {
-    e.target.style.backgroundColor = "red";
+    e.target.style.backgroundColor = color.value;
   }
 }
 
 function resetGrid() {
-  const board = document.querySelector(".board");
-  let squares = board.querySelectorAll("div");
+  const grid = document.querySelector(".grid");
+  let squares = grid.querySelectorAll("div");
   squares.forEach((div) => (div.style.backgroundColor = "white"));
 }
 
