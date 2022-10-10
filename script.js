@@ -3,6 +3,24 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+let choice = 0;
+
+const colorMode = document.getElementById("color");
+const eraser = document.getElementById("eraser");
+const rainbow = document.getElementById("rainbow");
+
+colorMode.addEventListener("click", () => {
+  choice = 1;
+});
+
+eraser.addEventListener("click", () => {
+  choice = 2;
+});
+
+rainbow.addEventListener("click", () => {
+  choice = 3;
+});
+
 function createGrid(size) {
   const grid = document.querySelector(".grid");
   const squares = grid.querySelectorAll("div");
@@ -17,8 +35,7 @@ function createGrid(size) {
 
   for (let i = 0; i < amount; i++) {
     const square = document.createElement("div");
-    square.style.backgroundColor = "white";
-    square.style.border = "1px solid black";
+    square.classList.add("square");
 
     square.addEventListener("mouseover", changeColor);
     square.addEventListener("mousedown", changeColor);
@@ -29,11 +46,22 @@ function createGrid(size) {
 }
 
 function changeColor(e) {
-  const color = document.getElementById("color-picker");
+  const colorPicker = document.getElementById("color-picker");
 
-  if (mouseDown) {
-    e.target.style.backgroundColor = color.value;
+  if (mouseDown && choice == 1) {
+    e.target.style.backgroundColor = colorPicker.value;
+  } else if (mouseDown && choice == 2) {
+    e.target.style.backgroundColor = "white";
+  } else if (mouseDown && choice == 3) {
+    e.target.style.backgroundColor = randomColor();
   }
+}
+
+function randomColor() {
+  let random = Math.floor(Math.random() * 16777215).toString(16);
+  let color = "#" + random;
+
+  return color;
 }
 
 function resetGrid() {
@@ -44,16 +72,17 @@ function resetGrid() {
 
 function changeGridSize() {
   const slider = document.getElementById("myRange");
-  const output = document.getElementById("demo");
+  const output = document.querySelector(".demo");
 
-  output.innerHTML = slider.value; // Display the default slider value
+  output.innerText = `${slider.value} x ${slider.value}`; // Display the default slider value
 
-  // Update the current slider value (each time you drag the slider handle)
   slider.oninput = function () {
     output.innerHTML = this.value;
+    output.innerText = `${slider.value} x ${slider.value}`;
+
     createGrid(this.value);
   };
 }
 
 changeGridSize();
-createGrid(16);
+createGrid(33);

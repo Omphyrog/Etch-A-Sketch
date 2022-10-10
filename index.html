@@ -9,22 +9,37 @@
     <title>Etch-A-Sketch</title>
   </head>
   <body>
-    <input type="color" id="color-picker" />
-    <button class="btn" id="eraser"></button>
-    <button class="btn" id="color">Color mode</button>
-    <button class="btn" id="reset-btn">Clear</button>
-    <div class="slidecontainer">
-      <input
-        type="range"
-        min="1"
-        max="64"
-        value="16"
-        class="slider"
-        id="myRange"
-      />
-      <p>Value: <span id="demo"></span></p>
-    </div>
+    <header class="header">
+      <h1 class="h1 pulseText">Etch-A-Sketch</h1>
+    </header>
 
-    <div class="grid"></div>
+    <div class="container">
+      <div class="grid-container pulseBox">
+        <div class="grid"></div>
+      </div>
+
+      <div class="utility-container">
+        <div class="color-picker-container">
+          <input type="color" id="color-picker" value="#ff0000" />
+        </div>
+        <div class="slide-container">
+          <input
+            type="range"
+            min="1"
+            max="64"
+            value="33"
+            class="slider"
+            id="myRange"
+          />
+          <p class="demo"></p>
+        </div>
+        <div class="btns">
+          <button class="btn" id="color">Color mode</button>
+          <button class="btn" id="rainbow">Rainbow mode</button>
+          <button class="btn" id="eraser">Eraser</button>
+          <button class="btn" id="reset-btn">Clear</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
