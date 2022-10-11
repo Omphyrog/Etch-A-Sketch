@@ -281,14 +281,6 @@ body {
   transition: 0.3s;
 }
 
-.btn:active {
-  background-color: rgba(188, 122, 241, 0.904);
-}
-
-.btn:focus {
-  background-color: rgba(188, 122, 241, 0.904);
-}
-
 .demo {
   color: white;
   font-size: 30px;

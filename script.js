@@ -11,14 +11,23 @@ const rainbow = document.getElementById("rainbow");
 
 colorMode.addEventListener("click", () => {
   choice = 1;
+  colorMode.style.backgroundColor = "rgba(188, 122, 241, 0.904)";
+  eraser.style.backgroundColor = "rgba(165, 55, 253, 0.8)";
+  rainbow.style.backgroundColor = "rgba(165, 55, 253, 0.8)";
 });
 
 eraser.addEventListener("click", () => {
   choice = 2;
+  colorMode.style.backgroundColor = "rgba(165, 55, 253, 0.8)";
+  eraser.style.backgroundColor = "rgba(188, 122, 241, 0.904)";
+  rainbow.style.backgroundColor = "rgba(165, 55, 253, 0.8)";
 });
 
 rainbow.addEventListener("click", () => {
   choice = 3;
+  colorMode.style.backgroundColor = "rgba(165, 55, 253, 0.8)";
+  eraser.style.backgroundColor = "rgba(165, 55, 253, 0.8))";
+  rainbow.style.backgroundColor = "rgba(188, 122, 241, 0.904)";
 });
 
 function createGrid(size) {
